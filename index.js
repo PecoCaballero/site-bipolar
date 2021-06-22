@@ -35,7 +35,7 @@ app.listen(PORT, () => {
                 console.log('current status code: ', statusCode)
                 if (statusCode !== prevStatus) {
 
-                    fs.writeFile(`${__dirname}\\status.json`, JSON.stringify({ prevStatus: 200 }), 'utf8', () => { })
+                    fs.writeFile(`${__dirname}/status.json`, JSON.stringify({ prevStatus: 200 }), 'utf8', () => { })
 
                     let body = { status: 'O ava caiu :(' }
                     if (statusCode === 200 || statusCode == 301) {
