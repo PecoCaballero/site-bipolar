@@ -51,5 +51,4 @@ setInterval(() => {
         .on("error", (e) => {
             console.log(e.statusCode)
         })
-}, 1000)
-//300000
+}, 300000)
