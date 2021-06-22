@@ -24,7 +24,7 @@ var oauth = new OAuth.OAuth(
 app.listen(PORT, () => {
     console.log('app listening at: ', PORT)
     setInterval(() => {
-        let { prevStatus } = JSON.parse(fs.readFileSync('./status.json', 'utf8'))
+        let { prevStatus } = JSON.parse(fs.readFileSync(`${__dirname}\\status.json`, 'utf8'))
 
         console.log('prevStatus: ', prevStatus)
 
@@ -35,7 +35,7 @@ app.listen(PORT, () => {
                 console.log('current status code: ', statusCode)
                 if (statusCode !== prevStatus) {
 
-                    fs.writeFile('./status.json', JSON.stringify({ prevStatus: 200 }), 'utf8', () => { })
+                    fs.writeFile(`${__dirname}\\status.json`, JSON.stringify({ prevStatus: 200 }), 'utf8', () => { })
 
                     let body = { status: 'O ava caiu :(' }
                     if (statusCode === 200 || statusCode == 301) {
