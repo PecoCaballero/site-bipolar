@@ -21,14 +21,19 @@ var oauth = new OAuth.OAuth(
     'HMAC-SHA1'
 )
 
+let { test } = JSON.parse(fs.readFileSync(`${__dirname}/status.json`, 'utf8'))
+    
+console.log('test: ', test)
+
+fs.writeFile(`${__dirname}/status.json`, JSON.stringify({ test: 200 }), 'utf8', () => { })
+test = JSON.parse(fs.readFileSync(`${__dirname}/status.json`, 'utf8'))
+
+console.log('test: ', test)
+
 app.listen(PORT, () => {
     console.log('app listening at: ', PORT)
 
-    let { test } = JSON.parse(fs.readFileSync(`${__dirname}/status.json`, 'utf8'))
-    
-    console.log('test: ', test)
-    
-    fs.writeFile(`${__dirname}/status.json`, JSON.stringify({ test: 200 }), 'utf8', () => { })
+  
 
     setInterval(() => {
         let { prevStatus } = JSON.parse(fs.readFileSync(`${__dirname}/status.json`, 'utf8'))
