@@ -23,8 +23,15 @@ var oauth = new OAuth.OAuth(
 
 app.listen(PORT, () => {
     console.log('app listening at: ', PORT)
+
+    let { test } = JSON.parse(fs.readFileSync(`${__dirname}/status.json`, 'utf8'))
+    
+    console.log('test: ', test)
+    
+    fs.writeFile(`${__dirname}/status.json`, JSON.stringify({ test: 200 }), 'utf8', () => { })
+
     setInterval(() => {
-        let { prevStatus } = JSON.parse(fs.readFileSync(`${__dirname}\\status.json`, 'utf8'))
+        let { prevStatus } = JSON.parse(fs.readFileSync(`${__dirname}/status.json`, 'utf8'))
 
         console.log('prevStatus: ', prevStatus)
 
