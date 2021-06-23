@@ -21,7 +21,9 @@ var oauth = new OAuth.OAuth(
     'HMAC-SHA1'
 )
 
-let { test } = JSON.parse(fs.readFileSync(`${__dirname}/status.json`, 'utf8'))
+let json = fs.readFileSync(`${__dirname}/status.json`, 'utf8')
+
+let { test } = JSON.parse(json)
     
 console.log('test: ', test)
 
